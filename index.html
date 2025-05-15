@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>THE IE SCORE BY JORDAN AB WEXLER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+  <p>Indigeneity/Endogenous (I.E.) Score,
+   a technocratic metric for evaluating the right-to-speak  
+   or right-to-operate in sociopolitical or economic spaces,
+     based on spatial, institutional, and relational proximity to the land and community.</p>
+  
+<body>
+    <!-- Abstract Section -->
+<section id="ie-abstract">
+  <h2>The Indigeneity/Endogenous Score (I.E. Score): A Technocratic Metric for Situated Legitimacy</h2>
+  <p>
+    This paper proposes the Indigeneity/Endogenous (I.E.) Score — a composite index for assessing the situated legitimacy of individuals and institutions in speaking or acting on sociocultural and economic matters. Rooted in spatial, institutional, and community belonging, the I.E. score seeks to foreground place-based epistemologies and promote local sovereignty in knowledge production and economic activity. Though the model can be controversial in ethical deployment, it is offered as a conceptual and computational method to recalibrate authority and commerce toward land-bound accountability.
+  </p>
+</section>
+
+<!-- Calculator Tool -->
+<section id="ie-calculator">
+  <h3>I.E. Score Calculator</h3>
+  <form id="scoreForm">
+    <label>
+      Spatial Proximity (1–5):
+      <input type="number" name="spatial" min="1" max="5" required>
+    </label><br>
+    <label>
+      Institutional Embeddedness (1–5):
+      <input type="number" name="institutional" min="1" max="5" required>
+    </label><br>
+    <label>
+      Relational Recognition (1–5):
+      <input type="number" name="relational" min="1" max="5" required>
+    </label><br>
+    <label>
+      Weights (w1, w2, w3 - comma-separated):
+      <input type="text" id="weights" placeholder="e.g., 1,1,1" required>
+    </label><br>
+    <button type="submit">Calculate I.E. Score</button>
+  </form>
+  <p id="result"></p>
+</section>
+
+<script>
+  document.getElementById('scoreForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const s = parseFloat(this.spatial.value);
+    const i = parseFloat(this.institutional.value);
+    const r = parseFloat(this.relational.value);
+    const [w1, w2, w3] = document.getElementById('weights').value.split(',').map(Number);
+
+    const rawScore = w1 * s + w2 * i + w3 * r;
+    const minScore = Math.min(...[1, 1, 1].map((val, idx) => [w1, w2, w3][idx] * val));
+    const maxScore = Math.max(...[5, 5, 5].map((val, idx) => [w1, w2, w3][idx] * val));
+
+    const normalizedScore = 1 - ((rawScore - minScore) / (maxScore - minScore));
+
+    document.getElementById('result').textContent = `Raw Score: ${rawScore.toFixed(2)} | Normalized Score: ${normalizedScore.toFixed(2)} (0–1 scale)`;
+  });
+</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,16 @@
+p {
+    color: blue;
+    text-wrap: normal;
+    font-size: 16px;
+    text-align: :left;
+    spacing: 0.5em;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-style: italic;
+   word-wrap: 5px;
+   width: 300px;
+   padding: 10px;
+    margin: 20px;
+    
+}
